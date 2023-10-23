@@ -11,7 +11,7 @@ pipeline {
                 script {
                     #Give the location of terraform scripts directory relative 
                     #to the repo
-                    dir('../home/ec2-user/terraform-for-cluster') {
+                    dir('/home/ec2-user/terraform-for-cluster') {
                         sh "terraform init"
                         sh "terraform apply -auto-approve"
                     }
@@ -23,7 +23,7 @@ pipeline {
                 script {
                     #Give the location of kubernetes scripts directory relative 
                     #to the repo
-                    dir('../home/ec2-user/kubernetes') {
+                    dir('/home/ec2-user/kubernetes') {
                         sh "aws eks update-kubeconfig --name myapp-eks-cluster"
                         sh "kubectl apply -f nginx-deploy.yaml"
                         sh "kubectl apply -f nginx-svc.yaml"
